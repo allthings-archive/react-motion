@@ -228,50 +228,25 @@ export default class TransitionMotion extends React.Component<
   TransitionProps,
   TransitionMotionState,
 > {
-  static propTypes = {
-    defaultStyles: PropTypes.arrayOf(
-      PropTypes.shape({
-        key: PropTypes.string.isRequired,
-        data: PropTypes.any,
-        style: PropTypes.objectOf(PropTypes.number).isRequired,
-      }),
-    ),
-    styles: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.arrayOf(
-        PropTypes.shape({
-          key: PropTypes.string.isRequired,
-          data: PropTypes.any,
-          style: PropTypes.objectOf(
-            PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-          ).isRequired,
-        }),
-      ),
-    ]).isRequired,
-    children: PropTypes.func.isRequired,
-    willEnter: PropTypes.func,
-    willLeave: PropTypes.func,
-    didLeave: PropTypes.func,
-  };
-
-  static defaultProps: TransitionMotionDefaultProps = {
-    willEnter: styleThatEntered => stripStyle(styleThatEntered.style),
-    // recall: returning null makes the current unmounting TransitionStyle
-    // disappear immediately
-    willLeave: () => null,
-    didLeave: () => {},
-  };
-
   unmounting: boolean = false;
   animationID: ?number = null;
-  prevTime = 0;
-  accumulatedTime = 0;
+  prevTime: number = 0;
+  accumulatedTime: number = 0;
   // it's possible that currentStyle's value is stale: if props is immediately
   // changed from 0 to 400 to spring(0) again, the async currentStyle is still
   // at 0 (didn't have time to tick and interpolate even once). If we naively
   // compare currentStyle with destVal it'll be 0 === 0 (no animation, stop).
   // In reality currentStyle should be 400
   unreadPropStyles: ?Array<TransitionStyle> = null;
+
+  // eslint-disable-next-line react/static-property-placement
+  static defaultProps: TransitionMotionDefaultProps = {
+    willEnter: styleThatEntered => stripStyle(styleThatEntered.style),
+    // recall: returning null makes the current unmounting TransitionStyle
+    // disappear immediately
+    willLeave: () => null,
+    didLeave: () => {},
+  }
 
   constructor(props: TransitionProps) {
     super(props);
@@ -348,7 +323,7 @@ export default class TransitionMotion extends React.Component<
   // after checking for unreadPropStyles != null, we manually go set the
   // non-interpolating values (those that are a number, without a spring
   // config)
-  clearUnreadPropStyle = (unreadPropStyles: Array<TransitionStyle>): void => {
+  clearUnreadPropStyle: (unreadPropStyles: Array<TransitionStyle>) => void = (unreadPropStyles: Array<TransitionStyle>): void => {
     let [
       mergedPropsStyles,
       currentStyles,
@@ -372,6 +347,7 @@ export default class TransitionMotion extends React.Component<
       let dirty = false;
 
       for (let key in unreadPropStyle) {
+        // $FlowFixMe: suppressing this error until we can refactor
         if (!Object.prototype.hasOwnProperty.call(unreadPropStyle, key)) {
           continue;
         }
@@ -411,7 +387,7 @@ export default class TransitionMotion extends React.Component<
     });
   };
 
-  startAnimationIfNecessary = (): void => {
+  startAnimationIfNecessary: () => void = (): void => {
     if (this.unmounting || this.animationID != null) {
       return;
     }
@@ -458,7 +434,7 @@ export default class TransitionMotion extends React.Component<
       const currentTime = timestamp || defaultNow();
       const timeDelta = currentTime - this.prevTime;
       this.prevTime = currentTime;
-      this.accumulatedTime = this.accumulatedTime + timeDelta;
+      this.accumulatedTime += timeDelta;
       // more than 10 frames? prolly switched browser tab. Restart
       if (this.accumulatedTime > msPerFrame * 10) {
         this.accumulatedTime = 0;
@@ -502,6 +478,7 @@ export default class TransitionMotion extends React.Component<
         let newLastIdealVelocity: Velocity = {};
 
         for (let key in newMergedPropsStyle) {
+          // $FlowFixMe: suppressing this error until we can refactor
           if (!Object.prototype.hasOwnProperty.call(newMergedPropsStyle, key)) {
             continue;
           }
@@ -619,3 +596,31 @@ export default class TransitionMotion extends React.Component<
     return renderedChildren && React.Children.only(renderedChildren);
   }
 }
+
+TransitionMotion.propTypes = {
+  defaultStyles: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      // eslint-disable-next-line react/forbid-prop-types
+      data: PropTypes.any,
+      style: PropTypes.objectOf(PropTypes.number).isRequired,
+    }),
+  ),
+  styles: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        // eslint-disable-next-line react/forbid-prop-types
+        data: PropTypes.any,
+        style: PropTypes.objectOf(
+          PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+        ).isRequired,
+      }),
+    ),
+  ]).isRequired,
+  children: PropTypes.func.isRequired,
+  willEnter: PropTypes.func,
+  willLeave: PropTypes.func,
+  didLeave: PropTypes.func,
+};
