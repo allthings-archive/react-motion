@@ -66,7 +66,12 @@
     "test:dev": "cross-env NODE_ENV=test karma start ./karma.conf.js --no-single-run --auto-watch",
     "test:cov": "cross-env NODE_ENV=test karma start ./karma.conf.js --single-run --reporters coverage",
     "gh-pages": "git fetch origin && git checkout gh-pages && git reset --hard origin/gh-pages && git rebase origin/master --force-rebase && npm run build-demos && git add . && git commit --amend --no-edit && git push origin gh-pages --force && git checkout master",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "security-check": "yarn audit --groups dependencies --level high || test $? -lt 7"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17",
+    "react-dom": "^16.8 || ^17"
   },
   "lint-staged": {
     "*.js": [
@@ -100,9 +105,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "core-js": "3.18.0",
-    "performance-now": "2.1.0",
-    "prop-types": "15.7.2",
-    "raf": "3.4.1"
+    "core-js": "^3.18.0",
+    "performance-now": "^2.1.0",
+    "prop-types": "^15.7.2",
+    "raf": "^3.4.1"
   }
 }
