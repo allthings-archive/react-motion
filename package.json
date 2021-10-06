@@ -1,9 +1,10 @@
 {
   "name": "@allthings/react-motion",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A spring that solves your animation problems.",
-  "main": "build/react-motion.js",
-  "types": "types",
+  "main": "lib/react-motion.js",
+  "module": "lib/react-motion.esm.js",
+  "types": "types/react-motion.d.ts",
   "devDependencies": {
     "@babel/cli": "7.15.7",
     "@babel/core": "7.15.5",
