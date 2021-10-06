@@ -53,7 +53,7 @@ export default class StaggeredMotion extends React.Component<
     const { defaultStyles, styles } = this.props;
     const currentStyles: Array<PlainStyle> =
       defaultStyles || styles().map(stripStyle);
-    const currentVelocities = currentStyles.map(currentStyle =>
+    const currentVelocities = currentStyles.map((currentStyle) =>
       mapToZero(currentStyle),
     );
     return {
@@ -78,7 +78,9 @@ export default class StaggeredMotion extends React.Component<
   // after checking for unreadPropStyles != null, we manually go set the
   // non-interpolating values (those that are a number, without a spring
   // config)
-  clearUnreadPropStyle: (unreadPropStyles: Array<Style>) => void = (unreadPropStyles: Array<Style>): void => {
+  clearUnreadPropStyle: (unreadPropStyles: Array<Style>) => void = (
+    unreadPropStyles: Array<Style>,
+  ): void => {
     let {
       currentStyles,
       currentVelocities,
@@ -132,7 +134,7 @@ export default class StaggeredMotion extends React.Component<
 
     // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
     // call cb? No, otherwise accidental parent rerender causes cb trigger
-    this.animationID = defaultRaf(timestamp => {
+    this.animationID = defaultRaf((timestamp) => {
       // https://github.com/chenglou/react-motion/pull/420
       // > if execution passes the conditional if (this.unmounting), then
       // executes async defaultRaf and after that component unmounts and after
@@ -208,9 +210,8 @@ export default class StaggeredMotion extends React.Component<
             newLastIdealVelocity[key] = 0;
           } else {
             let newLastIdealStyleValue = this.state.lastIdealStyles[i][key];
-            let newLastIdealVelocityValue = this.state.lastIdealVelocities[i][
-              key
-            ];
+            let newLastIdealVelocityValue =
+              this.state.lastIdealVelocities[i][key];
             for (let j = 0; j < framesToCatchUp; j++) {
               [newLastIdealStyleValue, newLastIdealVelocityValue] = stepper(
                 msPerFrame / 1000,
