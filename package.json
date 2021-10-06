@@ -1,6 +1,6 @@
 {
   "name": "@allthings/react-motion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A spring that solves your animation problems.",
   "main": "build/react-motion.js",
   "types": "types",
