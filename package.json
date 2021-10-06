@@ -1,6 +1,6 @@
 {
   "name": "@allthings/react-motion",
-  "version": "0.6.4",
+  "version": "1.0.0",
   "description": "A spring that solves your animation problems.",
   "main": "lib/react-motion.js",
   "module": "lib/react-motion.esm.js",
@@ -93,7 +93,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chenglou/react-motion.git"
+    "url": "https://github.com/allthings/react-motion.git"
   },
   "keywords": [
     "react",
@@ -107,10 +107,7 @@
     "transition",
     "ui"
   ],
-  "author": [
-    "nkbt",
-    "chenglou"
-  ],
+  "author": "chenglou",
   "license": "MIT",
   "dependencies": {
     "core-js": "^3.18.0",

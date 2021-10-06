@@ -31,18 +31,18 @@ steps:
     agents:
       queue: default
 
-
-  - name: flow_check
-    <<: *common
-    timeout_in_minutes: 5
-    command: >
-      bin/artifacts-download.sh &&
-      bin/docker-node.sh yarn flow_check
-
-  - name: unit
-    <<: *common
-    timeout_in_minutes: 5
-    command: >
-      bin/artifacts-download.sh &&
-      bin/docker-test.sh yarn test
+#  TODO: add test and types check pipeline
+#  - name: flow_check
+#    <<: *common
+#    timeout_in_minutes: 5
+#    command: >
+#      bin/artifacts-download.sh &&
+#      bin/docker-node.sh yarn flow_check
+#
+#  - name: unit
+#    <<: *common
+#    timeout_in_minutes: 5
+#    command: >
+#      bin/artifacts-download.sh &&
+#      bin/docker-test.sh yarn test
 

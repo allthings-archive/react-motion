@@ -58,14 +58,12 @@ export default class Motion extends React.Component<MotionProps, MotionState> {
   // after checking for unreadPropStyle != null, we manually go set the
   // non-interpolating values (those that are a number, without a spring
   // config)
-  clearUnreadPropStyle: (destStyle: Style) => void = (destStyle: Style): void => {
+  clearUnreadPropStyle: (destStyle: Style) => void = (
+    destStyle: Style,
+  ): void => {
     let dirty = false;
-    let {
-      currentStyle,
-      currentVelocity,
-      lastIdealStyle,
-      lastIdealVelocity,
-    } = this.state;
+    let { currentStyle, currentVelocity, lastIdealStyle, lastIdealVelocity } =
+      this.state;
 
     for (let key in destStyle) {
       // $FlowFixMe: suppressing this error until we can refactor
@@ -107,7 +105,7 @@ export default class Motion extends React.Component<MotionProps, MotionState> {
 
     // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
     // call cb? No, otherwise accidental parent rerender causes cb trigger
-    this.animationID = defaultRaf(timestamp => {
+    this.animationID = defaultRaf((timestamp) => {
       // https://github.com/chenglou/react-motion/pull/420
       // > if execution passes the conditional if (this.unmounting), then
       // executes async defaultRaf and after that component unmounts and after
@@ -270,4 +268,4 @@ Motion.propTypes = {
   ).isRequired,
   children: PropTypes.func.isRequired,
   onRest: PropTypes.func,
-}
+};

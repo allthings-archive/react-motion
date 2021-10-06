@@ -241,12 +241,12 @@ export default class TransitionMotion extends React.Component<
 
   // eslint-disable-next-line react/static-property-placement
   static defaultProps: TransitionMotionDefaultProps = {
-    willEnter: styleThatEntered => stripStyle(styleThatEntered.style),
+    willEnter: (styleThatEntered) => stripStyle(styleThatEntered.style),
     // recall: returning null makes the current unmounting TransitionStyle
     // disappear immediately
     willLeave: () => null,
     didLeave: () => {},
-  }
+  };
 
   constructor(props: TransitionProps) {
     super(props);
@@ -254,13 +254,8 @@ export default class TransitionMotion extends React.Component<
   }
 
   defaultState(): TransitionMotionState {
-    const {
-      defaultStyles,
-      styles,
-      willEnter,
-      willLeave,
-      didLeave,
-    } = this.props;
+    const { defaultStyles, styles, willEnter, willLeave, didLeave } =
+      this.props;
     const destStyles: Array<TransitionStyle> =
       typeof styles === 'function' ? styles(defaultStyles) : styles;
 
@@ -272,7 +267,7 @@ export default class TransitionMotion extends React.Component<
     if (defaultStyles == null) {
       oldMergedPropsStyles = destStyles;
     } else {
-      oldMergedPropsStyles = (defaultStyles: any).map(defaultStyleCell => {
+      oldMergedPropsStyles = (defaultStyles: any).map((defaultStyleCell) => {
         // TODO: key search code
         for (let i = 0; i < destStyles.length; i++) {
           if (destStyles[i].key === defaultStyleCell.key) {
@@ -284,12 +279,12 @@ export default class TransitionMotion extends React.Component<
     }
     const oldCurrentStyles =
       defaultStyles == null
-        ? destStyles.map(s => stripStyle(s.style))
-        : (defaultStyles: any).map(s => stripStyle(s.style));
+        ? destStyles.map((s) => stripStyle(s.style))
+        : (defaultStyles: any).map((s) => stripStyle(s.style));
     const oldCurrentVelocities =
       defaultStyles == null
-        ? destStyles.map(s => mapToZero(s.style))
-        : defaultStyles.map(s => mapToZero(s.style));
+        ? destStyles.map((s) => mapToZero(s.style))
+        : defaultStyles.map((s) => mapToZero(s.style));
     const [
       mergedPropsStyles,
       currentStyles,
@@ -323,7 +318,9 @@ export default class TransitionMotion extends React.Component<
   // after checking for unreadPropStyles != null, we manually go set the
   // non-interpolating values (those that are a number, without a spring
   // config)
-  clearUnreadPropStyle: (unreadPropStyles: Array<TransitionStyle>) => void = (unreadPropStyles: Array<TransitionStyle>): void => {
+  clearUnreadPropStyle: (unreadPropStyles: Array<TransitionStyle>) => void = (
+    unreadPropStyles: Array<TransitionStyle>,
+  ): void => {
     let [
       mergedPropsStyles,
       currentStyles,
@@ -394,7 +391,7 @@ export default class TransitionMotion extends React.Component<
 
     // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
     // call cb? No, otherwise accidental parent rerender causes cb trigger
-    this.animationID = defaultRaf(timestamp => {
+    this.animationID = defaultRaf((timestamp) => {
       // https://github.com/chenglou/react-motion/pull/420
       // > if execution passes the conditional if (this.unmounting), then
       // executes async defaultRaf and after that component unmounts and after
