@@ -25,7 +25,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "codemirror": "5.63.1",
     "cross-env": "7.0.3",
-    "css-loader": "6.3.0",
+    "css-loader": "6.4.0",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.3.0",
