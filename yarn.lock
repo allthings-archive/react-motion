@@ -4512,10 +4512,10 @@ jasmine-core@3.99.1:
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.99.1.tgz#5bfa4b2d76618868bfac4c8ff08bb26fffa4120d"
   integrity sha512-Hu1dmuoGcZ7AfyynN3LsfruwMbxMALMka+YtZeGoLuDEySVmVAPaonkNoBRIw/ectu8b9tVQCJNgp4a4knp+tg==
 
-jasmine-core@^3.6.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.9.0.tgz#09a3c8169fe98ec69440476d04a0e4cb4d59e452"
-  integrity sha512-Tv3kVbPCGVrjsnHBZ38NsPU3sDOtNa0XmbG2baiyJqdb5/SPpDO6GVwJYtUryl6KB4q1Ssckwg612ES9Z0dreQ==
+jasmine-core@^4.1.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.1.1.tgz#1045091e16f4f19e1d72416eef5db01e64d5fbeb"
+  integrity sha512-lmUfT5XcK9KKvt3lLYzn93hc4MGzlUBowExFVgzbSW0ZCrdeyS574dfsyfRhxbg81Wj4gk+RxUiTnj7KBfDA1g==
 
 jest-worker@^24.0.0:
   version "24.9.0"
@@ -4663,12 +4663,12 @@ karma-jasmine-diff-reporter@2.0.1:
     diff "^3.5.0"
     karma ">=0.9"
 
-karma-jasmine@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-4.0.2.tgz#386db2a3e1acc0af5265c711f673f78f1e4938de"
-  integrity sha512-ggi84RMNQffSDmWSyyt4zxzh2CQGwsxvYYsprgyR1j8ikzIduEdOlcLvXjZGwXG/0j41KUXOWsUCBfbEHPWP9g==
+karma-jasmine@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-5.0.1.tgz#854e9204b62cfa07242a8c66b8ab83751a896d02"
+  integrity sha512-FkL1Kk+JAKmim8VWU8RXKZBpl0lLI7J8LijM0/q7oP7emfB6QMZV1Az+JgqGKSLpF0tYaav+KUVFQroZUxQTHA==
   dependencies:
-    jasmine-core "^3.6.0"
+    jasmine-core "^4.1.0"
 
 karma-webpack@5.0.0:
   version "5.0.0"
