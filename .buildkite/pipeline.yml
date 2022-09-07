@@ -2,7 +2,7 @@ common: &common
   branches: '!HEAD'
   timeout_in_minutes: 60
   agents:
-    queue: t2-large
+    queue: large
 steps:
   - name: security-check
     <<: *common
