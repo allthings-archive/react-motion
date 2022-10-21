@@ -26,7 +26,7 @@
     "codemirror": "5.65.3",
     "cross-env": "7.0.3",
     "css-loader": "6.7.1",
-    "eslint": "7.32.0",
+    "eslint": "8.26.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
