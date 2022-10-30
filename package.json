@@ -35,7 +35,7 @@
     "eslint-plugin-react-hooks": "4.5.0",
     "flow-bin": "0.178.0",
     "flow-copy-source": "2.0.9",
-    "husky": "7.0.4",
+    "husky": "8.0.1",
     "inject-loader": "4.0.1",
     "isparta-loader": "2.0.0",
     "jasmine-core": "3.99.1",
