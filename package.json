@@ -23,7 +23,7 @@
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.5",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "codemirror": "5.65.3",
+    "codemirror": "5.65.9",
     "cross-env": "7.0.3",
     "css-loader": "6.7.1",
     "eslint": "7.32.0",
