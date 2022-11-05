@@ -45,7 +45,7 @@
     "karma-jasmine": "4.0.2",
     "karma-jasmine-diff-reporter": "3.0.0",
     "karma-webpack": "5.0.0",
-    "lint-staged": "12.5.0",
+    "lint-staged": "13.0.3",
     "lodash.range": "3.2.0",
     "prettier": "2.7.1",
     "react": "18.2.0",
